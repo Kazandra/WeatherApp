@@ -5,10 +5,12 @@ const api = {
 }
 
 function App() {
+
   const [query, setQuery] = useState('');
   const [weather, setWeather] = useState({});
   const [city, setCity] = useState({});
   const search = evt => {
+
     if (evt.key === "Enter") {
       fetch(`${api.base}weather?q=${query}&units=metrics&APPID=${api.key}`)
       .then(res => res.json())
@@ -35,9 +37,11 @@ function App() {
   }
 
   return (
-    <div className={(typeof weather.main != "undefined") ? ((((weather.main.temp - 273) * (9/5) + 32) > 80) ? 'app hot' : 'app')
 
-     : 'app'}>
+    <div className={(typeof weather.main != "undefined") ? ((((weather.main.temp - 273) * (9/5) + 32) > 80) ? 'app hot' :
+    (((weather.main.temp - 273) * (9/5) + 32) < 40) ? 'app cold' :
+    'app') : 'app'}>
+
       <main>
         <div className="search-box">
           <input
@@ -49,10 +53,12 @@ function App() {
             onKeyPress={search}
           />
         </div>
+
         {(typeof weather.main != "undefined") ? (
           <div className="location-box">
             <div className="location">{weather.name}, {weather.sys.country}</div>
             <div className="date">{dateBuilder(new Date())}</div>
+
             <div className="weather-box">
               <div className="temp">
                 {(Math.round((weather.main.temp - 273) * (9/5) + 32))}°F

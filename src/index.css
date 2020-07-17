@@ -19,12 +19,10 @@ body
 .app.cold
 {
   background-image: url('./img/cold.png');
-  transition: 0.8s ease-out;
 }
 .app.hot
 {
   background-image: url('./img/hot.png');
-  transition: 0.8s ease-out;
 }
 main
 {

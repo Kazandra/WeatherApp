@@ -8,6 +8,7 @@ function App() {
 
   const [query, setQuery] = useState('');
   const [weather, setWeather] = useState({});
+  const [city, setCity] = useState({});
   const search = evt => {
 
     if (evt.key === "Enter") {
@@ -16,6 +17,7 @@ function App() {
       .then(result => {
         setQuery('');
         setWeather(result);
+        setCity(result);
         console.log(result);
       });
     }

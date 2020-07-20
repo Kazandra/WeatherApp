@@ -9,7 +9,6 @@ function App() {
   const [query, setQuery] = useState('');
   const [weather, setWeather] = useState({});
   const search = evt => {
-
     if (evt.key === "Enter") {
       fetch(`${api.base}weather?q=${query}&units=metrics&APPID=${api.key}`)
       .then(res => res.json())
@@ -19,8 +18,9 @@ function App() {
         console.log(result);
       });
     }
-  }
 
+
+  }
   const dateBuilder = (x) => {
 
     let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -58,9 +58,13 @@ function App() {
             <div className="date">{dateBuilder(new Date())}</div>
 
             <div className="weather-box">
-              <div className="temp">
+              <div className="tempF">
                 {(Math.round((weather.main.temp - 273) * (9/5) + 32))}°F
               </div>
+              <div className="tempC">
+                {(Math.round((weather.main.temp - 273)))}°C
+              </div>
+
               <div className="weather">{weather.weather[0].main}</div>
               </div>
             </div>
